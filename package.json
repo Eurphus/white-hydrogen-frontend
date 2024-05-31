@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "setup": "./deploy.ps1 && npm install && npm run build:contracts && npm run bindings",
+    "setup": "./initialize.sh && npm install && npm run build:contracts && npm run bindings",
     "clean": "rm -rf .next .soroban .hydro-config",
     "reset": "npm run clean && npm run setup",
     "build:contracts": "soroban contract build",

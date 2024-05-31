@@ -4,8 +4,6 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import { Campaign, Pledge } from '../components/organisms'
 import { WalletData } from '../components/molecules'
-import abundance from "abundance-token"
-import crowdfund from "crowdfund-contract"
 
 const Home: NextPage = () => {
   return (

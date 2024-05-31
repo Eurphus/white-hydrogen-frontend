@@ -8,13 +8,14 @@ SOROBAN_RPC_URL=$SOROBAN_RPC_HOST
 SOROBAN_NETWORK_PASSPHRASE="Test SDF Network ; September 2015"
 USER="hydro-admin"
 
-soroban keys generate $USER --network testnet
+
 
 echo "Using $NETWORK network"
 echo "  RPC URL: $SOROBAN_RPC_URL"
 
 echo Add the $NETWORK network to cli client
-soroban network add --global testnet --rpc-url $SOROBAN_RPC_HOST --network-passphrase $SOROBAN_NETWORK_PASSPHRASE
+soroban network add --global testnet --rpc-url $SOROBAN_RPC_HOST --network-passphrase "$SOROBAN_NETWORK_PASSPHRASE"
+soroban keys generate $USER --network testnet
 
 echo Add $NETWORK to .hydro-config for use with npm scripts
 mkdir -p .hydro-config
