@@ -25,6 +25,7 @@ echo "$SOROBAN_NETWORK_PASSPHRASE" >./.hydro-config/passphrase
 
 soroban config identity generate $USER --network $NETWORK
 ABUNDANCE_ADMIN_ADDRESS="$(soroban config identity address $USER)"
+echo -n "$ABUNDANCE_ADMIN_ADDRESS" >.hydro-config/abundance_admin_address
 
 ARGS="--network testnet --source $USER"
 
@@ -47,26 +48,26 @@ CROWDFUND_ID="$(
 echo "Contract deployed succesfully with ID: $CROWDFUND_ID"
 echo "$CROWDFUND_ID" >.hydro-config/crowdfund_id
 
-echo "Initialize the abundance token contract"
-soroban contract invoke \
-  $ARGS \
-  --id "$ABUNDANCE_ID" \
-  -- \
-  initialize \
-  --symbol ABND \
-  --decimal 7 \
-  --name abundance \
-  --admin "$ABUNDANCE_ADMIN_ADDRESS"
+# echo "Initialize the abundance token contract"
+# soroban contract invoke \
+#   $ARGS \
+#   --id "$ABUNDANCE_ID" \
+#   -- \
+#   initialize \
+#   --symbol ABND \
+#   --decimal 7 \
+#   --name abundance \
+#   --admin "$ABUNDANCE_ADMIN_ADDRESS"
 
-echo "Initialize the crowdfund contract"
-deadline="$(($(date +"%s") + 86400))"
-soroban contract invoke \
-  $ARGS \
-  --id "$CROWDFUND_ID" \
-  -- \
-  initialize \
-  --recipient "$ABUNDANCE_ADMIN_ADDRESS" \
-  --deadline "$deadline" \
-  --target_amount "10000000000" \
-  --token "$ABUNDANCE_ID"
+# echo "Initialize the crowdfund contract"
+# deadline="$(($(date +"%s") + 86400))"
+# soroban contract invoke \
+#   $ARGS \
+#   --id "$CROWDFUND_ID" \
+#   -- \
+#   initialize \
+#   --recipient "$ABUNDANCE_ADMIN_ADDRESS" \
+#   --deadline "$deadline" \
+#   --target_amount "10000000000" \
+#   --token "$ABUNDANCE_ID"
 echo "Done"

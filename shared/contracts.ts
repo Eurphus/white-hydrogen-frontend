@@ -1,9 +1,8 @@
 import * as Abundance from 'abundance-token'
 import * as Crowdfund from 'crowdfund-contract'
 import { SorobanRpc } from 'stellar-sdk'
-import config from './config.json'
-const { network, rpcUrl } = config
-
+import { network, rpcUrl } from '../config'
+console.log(network)
 export const abundance = new Abundance.Contract({
   rpcUrl,
   ...Abundance.networks[network as keyof typeof Abundance.networks],

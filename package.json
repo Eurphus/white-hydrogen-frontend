@@ -12,7 +12,8 @@
     "reset": "npm run clean && npm run setup",
     "build:contracts": "soroban contract build",
     "bindings:crowdfund": "soroban contract bindings typescript --wasm ./target/wasm32-unknown-unknown/release/soroban_crowdfund_contract.wasm --id $(cat .hydro-config/crowdfund_id) --output-dir ./.hydro-config/crowdfund-contract --network $(cat ./.hydro-config/network) --overwrite",
-    "bindings:abundance": "soroban contract bindings typescript --wasm ./target/wasm32-unknown-unknown/release/abundance_token.wasm --id $(cat ./.hydro-config/abundance_token_id) --output-dir ./.hydro-config/abundance-token --network $(cat ./.hydro-config/network) --overwrite"
+    "bindings:abundance": "soroban contract bindings typescript --wasm ./target/wasm32-unknown-unknown/release/abundance_token.wasm --id $(cat ./.hydro-config/abundance_token_id) --output-dir ./.hydro-config/abundance-token --network $(cat ./.hydro-config/network) --overwrite",
+    "bindings": "npm run bindings:crowdfund && npm run bindings:abundance"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "1.0.2",
@@ -21,6 +22,7 @@
     "axios": "^0.27.2",
     "bigint-conversion": "^2.4.1",
     "crowdfund-contract": "file:./.hydro-config/crowdfund-contract",
+    "fs": "^0.0.1-security",
     "humanize-duration": "^3.27.3",
     "moment": "^2.29.4",
     "next": "^13.4.4",
@@ -40,5 +42,10 @@
   "engines": {
     "node": ">=18.14.2",
     "npm": ">=9.5.0"
+  },
+  "browser": {
+    "fs": false,
+    "path": false,
+    "os": false
   }
 }
