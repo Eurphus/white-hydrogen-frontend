@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "npm run setup && next start",
     "lint": "next lint",
     "setup": "./initialize.sh && npm install && npm run build:contracts && npm run bindings",
     "clean": "rm -rf .next .soroban .hydro-config",
